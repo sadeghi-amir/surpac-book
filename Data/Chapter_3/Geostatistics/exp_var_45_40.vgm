@@ -1,0 +1,16 @@
+VARIOGRAM MODELLING         21-Feb-2022
+
+Extra attributes
+----------------
+
+  Normalised
+
+
+Current variogram model parameters
+----------------------------------
+
+  Model Type    : Spherical
+  Nugget        : 0.805672
+
+  Structure    Sill       Range
+      1     0.205244  143.467

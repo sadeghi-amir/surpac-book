@@ -1,0 +1,19 @@
+#Block Model Report format file : Version 3
+att=au_ok
+display=Yes
+weight by=Mass
+report=Average
+sg attribute=sg
+group att=z
+group range=0,250,10
+Geometry Grouping Type=2
+Geometry File=str/gs_qv_ns_smooth.dtm
+Geometry Range=
+Using Partial percentage=Yes
+precision=3
+partial percent att=pop
+format headers=Yes
+Cull Empty lines=No
+Report Volume To=2 decimal places
+Fill all cells for the group attribute=No
+Pivot Compatible=No
