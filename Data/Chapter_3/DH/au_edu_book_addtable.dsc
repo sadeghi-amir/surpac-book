@@ -1,0 +1,32 @@
+#
+# FREE format for table assay
+#
+TABLE=assay
+   DELIMITER=,
+   SPACE_FILL=Y
+   QUALIFIER=NONE
+      FIELD=hole_id
+         COLUMN=4
+      FIELD=samp_id
+         COLUMN=5
+      FIELD=depth_from
+         COLUMN=1
+      FIELD=depth_to
+         COLUMN=2
+      FIELD=au
+         COLUMN=3
+#
+# FREE format for table lithology
+#
+TABLE=lithology
+   DELIMITER=,
+   SPACE_FILL=Y
+   QUALIFIER=NONE
+      FIELD=hole_id
+         COLUMN=3
+      FIELD=depth_from
+         COLUMN=1
+      FIELD=depth_to
+         COLUMN=2
+      FIELD=rock
+         COLUMN=4

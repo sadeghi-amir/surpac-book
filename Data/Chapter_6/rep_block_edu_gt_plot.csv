@@ -1,0 +1,21 @@
+
+
+Block Model: bm_edu_book
+Constraints used
+  a.  INSIDE CONSTRAINT BM/CONS_IN_OREBODY
+
+  Keep blocks partially in the constraint : False
+
+
+
+
+
+
+Attribute ,Cutoff ,Cumulative Volume ,Cumulative Tonnes ,Grade Above Cutoff 
+au_ok,0,1470474.12,3969435.72,2.35
+au_ok,0.5,1470474.12,3969435.72,2.35
+au_ok,1,1470474.12,3969435.72,2.35
+au_ok,1.5,1463694.09,3951129.64,2.36
+au_ok,2,1220322.75,3294027.03,2.47
+au_ok,2.5,507054.44,1369047.00,2.73
+au_ok,3,50466.06,136258.37,3.12

@@ -1,0 +1,15 @@
+#Block Model Report format file : Version 1
+att=au_ok
+display=Yes
+weight by=Mass
+report=Average
+sg attribute=sg
+volume attribute=pop
+group att=au_ok
+group range=0,3.5,0.5
+Geometry Grouping Type=0
+format headers=Yes
+Cull Empty lines=No
+Report Volume To=2 decimal places
+Fill all cells for the group attribute=No
+Pivot Compatible=No

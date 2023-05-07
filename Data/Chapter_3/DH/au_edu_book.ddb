@@ -1,0 +1,202 @@
+DATABASE "au_edu_book"
+  TYPE "access"
+  DB_SPECIFIC "directory=d:/projects/book/data"
+  TABLE collar
+    FIELD hole_id
+      TYPE character(  9)
+      VALIDATION "SSI_edit_style=upper~SSI_length=9"
+    FIELD y
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 10000~SSI_decimals=3~SSI_length=9"
+    FIELD x
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 10000~SSI_decimals=3~SSI_length=9"
+    FIELD z
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 10000~SSI_decimals=3~SSI_length=9"
+    FIELD max_depth
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 10000~SSI_decimals=3~SSI_length=9"
+    FIELD hole_path
+      TYPE character(  8)
+      VALIDATION "SSI_edit_style=mixed~SSI_set=;LINEAR;CURVED;VERTICAL;linear;curved;vertical~SSI_length=8"
+      NULLS
+    INDEX idx1   UNIQUE
+      ASC hole_id
+  TABLE survey
+    FIELD hole_id
+      TYPE character(  9)
+      VALIDATION "SSI_edit_style=upper~SSI_length=9"
+    FIELD depth
+      TYPE real(  6,  2)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 9999~SSI_decimals=2~SSI_length=6"
+    FIELD y
+      TYPE real(  9,  3)
+      CALCULATED y(hole_id,depth)
+    FIELD x
+      TYPE real(  9,  3)
+      CALCULATED x(hole_id,depth)
+    FIELD z
+      TYPE real(  9,  3)
+      CALCULATED z(hole_id,depth)
+    FIELD dip
+      TYPE real(  6,  2)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=-90 90~SSI_decimals=2~SSI_length=6"
+    FIELD azimuth
+      TYPE real(  6,  2)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 360~SSI_decimals=2~SSI_length=6"
+    INDEX idx2   UNIQUE
+      ASC hole_id
+      ASC depth
+  TABLE translation
+    FIELD table_name
+      TYPE character( 18)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=18"
+    FIELD field_name
+      TYPE character( 18)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=18"
+    FIELD code
+      TYPE character(  6)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=6"
+    FIELD num_equiv
+      TYPE real(  8,  2)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=-999999 9999999~SSI_decimals=2~SSI_length=8"
+    FIELD description
+      TYPE character( 32)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=32"
+      NULLS
+    INDEX idx3   UNIQUE
+      ASC table_name
+      ASC field_name
+      ASC code
+  TABLE styles
+    FIELD table_name
+      TYPE character( 18)
+      VALIDATION "SSI_edit_style=lower~SSI_length=18"
+    FIELD field_name
+      TYPE character( 18)
+      VALIDATION "SSI_edit_style=lower~SSI_length=18"
+    FIELD style_type
+      TYPE character(  1)
+      VALIDATION "SSI_edit_style=upper~SSI_set=;C;N;D~SSI_length=1"
+    FIELD code
+      TYPE character( 20)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=20"
+      NULLS
+    FIELD from_value
+      TYPE character( 23)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=23"
+      NULLS
+    FIELD to_value
+      TYPE character( 23)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=23"
+      NULLS
+    FIELD graphics_colour
+      TYPE character( 32)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=32"
+    FIELD plotting_colour
+      TYPE character( 32)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=32"
+    FIELD graphics_pattern
+      TYPE character(  5)
+      VALIDATION "SSI_edit_style=mixed~SSI_set=;solid;##;||;==;//;\\\\;::;<><>;[][]~SSI_length=5"
+    FIELD plotting_pattern
+      TYPE character( 16)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=16"
+    FIELD line_colour
+      TYPE character( 32)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=32"
+    FIELD line_style
+      TYPE character( 32)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=32"
+    FIELD line_weight
+      TYPE integer(  4)
+      VALIDATION "SSI_edit_style=i4~SSI_bounds=1 9~SSI_length=4"
+    FIELD marker_style
+      TYPE character( 16)
+      VALIDATION "SSI_edit_style=mixed~SSI_set=;*;X;+;.;O;@;(*);(.);(+);(x);(O);[];[*];[.];[x];<>;<*>;<.>;<+>;/\\;/*\\;/.\\;|>;|*>;|.>;<|;<*|;<.|;\\/;\\*/;\\./;#;++;/ \\;/_\\;/__\\;/_^_\\;|;/;\\;Y;Z~SSI_length=16"
+    FIELD marker_size
+      TYPE real(  4,  2)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0.01 9~SSI_decimals=2~SSI_length=4"
+    INDEX idx4  duplicates
+      ASC table_name
+    INDEX idx5  duplicates
+      ASC field_name
+  TABLE assay
+    FIELD hole_id
+      TYPE character( 12)
+      VALIDATION "SSI_edit_style=upper~SSI_length=12"
+    FIELD samp_id
+      TYPE character( 10)
+      VALIDATION "SSI_edit_style=upper~SSI_length=10"
+      NULLS
+    FIELD depth_from
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 9999~SSI_decimals=3~SSI_length=9"
+    FIELD y_from
+      TYPE real( 11,  3)
+      CALCULATED y(hole_id,depth_from)
+    FIELD x_from
+      TYPE real( 11,  3)
+      CALCULATED x(hole_id,depth_from)
+    FIELD z_from
+      TYPE real( 11,  3)
+      CALCULATED z(hole_id,depth_from)
+    FIELD depth_to
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 9999~SSI_decimals=3~SSI_length=9"
+    FIELD y_to
+      TYPE real( 11,  3)
+      CALCULATED y(hole_id,depth_to)
+    FIELD x_to
+      TYPE real( 11,  3)
+      CALCULATED x(hole_id,depth_to)
+    FIELD z_to
+      TYPE real( 11,  3)
+      CALCULATED z(hole_id,depth_to)
+    FIELD au
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 999~SSI_decimals=3~SSI_length=9"
+      NULLS
+    INDEX idx6   UNIQUE
+      ASC hole_id
+      ASC depth_from
+  TABLE lithology
+    FIELD hole_id
+      TYPE character( 12)
+      VALIDATION "SSI_edit_style=upper~SSI_length=12"
+    FIELD samp_id
+      TYPE character( 10)
+      VALIDATION "SSI_edit_style=upper~SSI_length=10"
+      NULLS
+    FIELD depth_from
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 9999~SSI_decimals=3~SSI_length=9"
+    FIELD y_from
+      TYPE real( 11,  3)
+      CALCULATED y(hole_id,depth_from)
+    FIELD x_from
+      TYPE real( 11,  3)
+      CALCULATED x(hole_id,depth_from)
+    FIELD z_from
+      TYPE real( 11,  3)
+      CALCULATED z(hole_id,depth_from)
+    FIELD depth_to
+      TYPE real(  9,  3)
+      VALIDATION "SSI_edit_style=r8~SSI_bounds=0 9999~SSI_decimals=3~SSI_length=9"
+    FIELD y_to
+      TYPE real( 11,  3)
+      CALCULATED y(hole_id,depth_to)
+    FIELD x_to
+      TYPE real( 11,  3)
+      CALCULATED x(hole_id,depth_to)
+    FIELD z_to
+      TYPE real( 11,  3)
+      CALCULATED z(hole_id,depth_to)
+    FIELD rock
+      TYPE character( 10)
+      VALIDATION "SSI_edit_style=mixed~SSI_length=10"
+      NULLS
+    INDEX idx7   UNIQUE
+      ASC hole_id
+      ASC depth_from
